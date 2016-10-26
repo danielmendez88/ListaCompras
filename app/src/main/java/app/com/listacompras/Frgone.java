@@ -19,6 +19,7 @@ public class Frgone extends Fragment {
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //inflate the layout fragment file
         rootView = inflater.inflate(R.layout.frgone, container, false);
         /**
          * regresar la vista que al final obtuvimos
