@@ -1,11 +1,14 @@
-package app.com.listacompras;
+package app.com.listacompras.fragments;
 
-import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import app.com.listacompras.R;
 
 /**
  * Created by daniel on 23/10/2016.
@@ -14,6 +17,11 @@ import android.view.ViewGroup;
 public class Frgone extends Fragment {
     @Nullable
     View rootView;
+
+    public Frgone() {
+        // Required empty public constructor
+    }
+
     /**
      * crear un oncreateview que es parte del ciclo de vida del fragmento
      */
@@ -27,5 +35,23 @@ public class Frgone extends Fragment {
          *
          */
         return rootView;
+    }
+
+    public static Frgone newInstance(Bundle Arguments){
+        Frgone fragmento = new Frgone();
+        if (Arguments != null)
+        {fragmento.setArguments(Arguments);}
+        return fragmento;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+
+        }catch (ClassCastException e)
+        {
+            throw new ClassCastException("Necesitas implementar");
+        }
     }
 }

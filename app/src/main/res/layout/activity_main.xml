@@ -8,15 +8,48 @@
     android:layout_height="match_parent"
     tools:context="app.com.listacompras.MainActivity">
 
+    <!--add AppBarLayout widget-->
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/Theme.AppCompat.Light"/>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:tabMode="fixed"
+            app:tabMaxWidth="0dp"
+            app:tabGravity="fill" />
+    </android.support.design.widget.AppBarLayout>
+    <!--add AppBarLayout widget-->
+
+    <!--add viewPager-->
+    <android.support.v4.view.ViewPager
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/viewPager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+    <!--add viewpager-->
+
     <!--agregar un fragment-->
-    <fragment
+    <!--<fragment
         android:id="@+id/fragmentoFR"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight=".5"
-        class="app.com.listacompras.Frgone" />
+        class="app.com.listacompras.fragments.Frgone" />-->
     <!--creo un  Floating Layout-->
-    <android.support.design.widget.FloatingActionButton
+    <!--<android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
@@ -24,5 +57,5 @@
         android:layout_alignParentRight="true"
         android:layout_gravity="bottom|right"
         android:src="@drawable/ic_cart"
-        app:elevation="9dp" />
+        app:elevation="9dp" />-->
 </android.support.design.widget.CoordinatorLayout>
