@@ -3,12 +3,14 @@ package app.com.listacompras.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import app.com.listacompras.R;
+import app.com.listacompras.interfaces.CodeScan;
 
 /**
  * Created by daniel on 23/10/2016.
@@ -17,7 +19,6 @@ import app.com.listacompras.R;
 public class Frgone extends Fragment {
     @Nullable
     View rootView;
-
     public Frgone() {
         // Required empty public constructor
     }
@@ -48,7 +49,6 @@ public class Frgone extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-
         }catch (ClassCastException e)
         {
             throw new ClassCastException("Necesitas implementar");

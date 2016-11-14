@@ -8,4 +8,5 @@
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="NavigationBarColor">#000000</color>
     <color name="windowBackground">#FFFFFF</color>
+    <color name="FloatingButton">#5D6674</color>
 </resources>
