@@ -22,7 +22,14 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     //declare an Array to add icons
     private int[] tabIcons ={
-            R.drawable.
+            R.drawable.ic_console,
+            R.drawable.ic_key_variant,
+            R.drawable.ic_lock_open
+    };
+    private String[] names_ ={
+            "Autenticación",
+            "Token",
+            "Credenciales"
     };
 
     @Override
@@ -42,13 +49,22 @@ public class MainActivity extends AppCompatActivity {
         //add tablayout
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        setupTabIcons();
+    }
+
+    private void setupTabIcons()
+    {
+        for (int j = 0; j < 3 ; j++)
+        {
+            tabLayout.getTabAt(j).setIcon(tabIcons[j]);
+        }
     }
 
     private void setupViewPager(ViewPager viewPager)
     {
         AdaptadorPager adapter = new AdaptadorPager(getSupportFragmentManager());
         for (int i= 0; i < 3; i++)
-        {adapter.addFragment(new Frgone(), "Etiqueta "+ " "+ String.valueOf(i+1));}
+        {adapter.addFragment(new Frgone(), names_[i]);}
         viewPager.setAdapter(adapter);
     }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lista Compras</string>
+    <string name="app_name">Tokens Generator App</string>
     <string name="text_one">Agregar un texto</string>
     <string name="btn_send">Enviar</string>
     <string name="text_name_product">Nombre de producto generico</string>
