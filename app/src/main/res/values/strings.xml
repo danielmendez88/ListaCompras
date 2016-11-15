@@ -4,5 +4,7 @@
     <string name="btn_send">Enviar</string>
     <string name="text_name_product">Nombre de producto generico</string>
     <string name="text_token">Nuevo Token</string>
+    <string name="hint">Texto de Entrada</string>
+    <string name="credentials">Credenciales de usuario</string>
     <string name="text_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec lacinia quam. Pellentesque rhoncus porttitor urna, vel ultricies massa malesuada placerat. Proin finibus erat ac ultrices lobortis. Ut venenatis tortor eget lacus tincidunt, vel auctor lorem auctor. Etiam molestie vulputate mi eget pulvinar.</string>
 </resources>

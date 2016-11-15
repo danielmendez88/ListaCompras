@@ -1,6 +1,5 @@
 package app.com.listacompras;
 
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,12 +8,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import app.com.listacompras.fragments.Frgone;
+import app.com.listacompras.fragments.Frmcredencial;
 import app.com.listacompras.fragments.Frmtoken;
 import app.com.listacompras.interfaces.CodeScan;
 
@@ -24,8 +23,7 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    public FloatingActionButton FAB;
-    private static FragmentManager fmanager;
+    String fragmentToken;
     //declare an Array to add icons
     private int[] tabIcons ={
             R.drawable.ic_console,
@@ -56,24 +54,6 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
-
-        //get support fragment manager
-        fmanager = getSupportFragmentManager();
-
-        //FAB
-        FAB = (FloatingActionButton)findViewById(R.id.A1);
-        FAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String mensaje = "Este es un mensaje para el token";
-                //fragment
-                Bundle bundle = new Bundle();
-                bundle.putString("mensajes", mensaje);
-                Frmtoken token = new Frmtoken();
-                token.setArguments(bundle);
-                fmanager.beginTransaction().replace(R.id.frmtoken, token).commit();
-            }
-        });
     }
 
     private void setupTabIcons()
@@ -89,14 +69,15 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
         AdaptadorPager adapter = new AdaptadorPager(getSupportFragmentManager());
         adapter.addFragment(new Frgone(), names_[0]);
         adapter.addFragment(new Frmtoken(), names_[1]);
-        adapter.addFragment(new Frgone(), names_[2]);
+        adapter.addFragment(new Frmcredencial(), names_[2]);
         viewPager.setAdapter(adapter);
     }
 
     @Override
     public void enviarCode(String codigo) {
-        Frmtoken token = (Frmtoken) getSupportFragmentManager().findFragmentById(R.id.frmtoken);
-        token.GetMensaje(codigo);
+        FragmentManager fManager = getSupportFragmentManager();
+        Frmtoken token = (Frmtoken) fManager.findFragmentById(R.id.frmtoken);
+       // token.GetMensaje(codigo);
     }
 
     //create another class inside this one
@@ -128,4 +109,12 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
             myFragmenttitle.add(titulo);
         }
     }
+
+    //generate a void method to get a tag in the fragment we want to send message
+    public void setTagFragmentToken(String tag)
+    { fragmentToken = tag; }
+
+    public String getTagFragmentToken()
+    { return fragmentToken;}
+
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import app.com.listacompras.MainActivity;
 import app.com.listacompras.R;
 
 /**
@@ -23,25 +24,14 @@ public class Frmtoken extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.frtoken, container, false);
         texto = (TextView) root.findViewById(R.id.text_token);
-        Bundle bundle = this.getArguments();
-        if (bundle != null)
-        {
-            String texto_mensaje = bundle.getString("mensajes");
-            texto.setText(texto_mensaje);
-        }
+        String mytag = getTag();
+        ((MainActivity)getActivity()).setTagFragmentToken(mytag);
         //return my root view
         return root;
     }
 
-    public void GetMensaje(String mensaje)
+    public void GetMensaje(String message)
     {
-        texto.setText(mensaje);
+        texto.setText(message);
     }
-     public static Frmtoken newInstance(Bundle Arguments)
-     {
-         Frmtoken token = new Frmtoken();
-         if (Arguments != null)
-         {token.setArguments(Arguments);}
-         return token;
-     }
 }
