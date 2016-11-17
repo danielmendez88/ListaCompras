@@ -10,4 +10,14 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <!--A custom style from MyAler Dialog-->
+    <style name="MyAlerDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!--user for buttons-->
+        <item name="colorAccent">#FFC107</item>
+        <!--user for title and text-->
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <!--used to background-->
+        <item name="android:background">#4CAF50</item>
+    </style>
+
 </resources>

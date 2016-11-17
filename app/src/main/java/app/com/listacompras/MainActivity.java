@@ -1,5 +1,7 @@
 package app.com.listacompras;
 
+
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,10 +10,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import app.com.listacompras.clases.Eventoqr;
 import app.com.listacompras.fragments.Frgone;
 import app.com.listacompras.fragments.Frmcredencial;
 import app.com.listacompras.fragments.Frmtoken;
@@ -24,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     String fragmentToken;
+    Eventoqr evento;
+    FloatingActionButton FloatingButton;
+
     //declare an Array to add icons
     private int[] tabIcons ={
             R.drawable.ic_console,
@@ -54,6 +61,12 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
+
+        //cast floatingbutton
+        evento = new Eventoqr(this);
+        FloatingButton = (FloatingActionButton) findViewById(R.id.A1);
+        View.OnClickListener l = evento;
+        FloatingButton.setOnClickListener(l);
     }
 
     private void setupTabIcons()
@@ -117,4 +130,8 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
     public String getTagFragmentToken()
     { return fragmentToken;}
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 }
