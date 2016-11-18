@@ -1,7 +1,6 @@
 package app.com.listacompras.clases;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -9,7 +8,6 @@ import android.view.View;
 
 import com.google.zxing.Result;
 
-import app.com.listacompras.MainActivity;
 import app.com.listacompras.R;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -51,14 +49,11 @@ public class Eventoqr implements View.OnClickListener, ZXingScannerView.ResultHa
         Log.v("Handler", result.getText());
         Log.e("Handler Barcode Format", result.getBarcodeFormat().toString());
         //add a Alert Dialog for show the QR code
-        if (result != null)
-        {
             AlertDialog.Builder DialogBox = new AlertDialog.Builder(cntx, R.style.MyAlerDialogStyle);
             DialogBox.setTitle("Código QR")
                     .setMessage(result.getText())
                     .setPositiveButton("OK", null)
                     .show();
-        }
     }
 
     //method that implements start camera

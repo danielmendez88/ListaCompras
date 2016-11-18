@@ -3,6 +3,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingRight="22dp"
+    android:paddingLeft="22dp"
+    android:background="@drawable/mycustombackground"
     android:id="@+id/frmtoken">
 
     <TextView
@@ -11,7 +14,8 @@
         android:id="@+id/text_token"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:layout_gravity="center"
+        android:layout_marginTop="200dp"
+        android:layout_gravity="center_horizontal"
         android:text="@string/text_token"/>
 
 </FrameLayout>
