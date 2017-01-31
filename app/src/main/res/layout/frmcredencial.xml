@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:id="@+id/credential"
     android:orientation="vertical"
     android:background="@drawable/mycustombackground"
     android:layout_height="match_parent">
-
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:layout_gravity="center_horizontal"
-        android:scaleType="fitCenter"
+    <!--Agregamos un RelativeLayout para poder tener dos widgets dentro de un contenedor y manejarlos-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:id="@+id/QRImageView" />
+        android:layout_marginRight="20dp" >
+
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:layout_marginTop="5dp"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:contentDescription="@string/content_description"
+                android:adjustViewBounds="true"
+                android:id="@+id/QRImageView" />
+    </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"

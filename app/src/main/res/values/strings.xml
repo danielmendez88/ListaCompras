@@ -7,4 +7,5 @@
     <string name="hint">Texto de Entrada</string>
     <string name="credentials">Credenciales de usuario</string>
     <string name="text_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec lacinia quam. Pellentesque rhoncus porttitor urna, vel ultricies massa malesuada placerat. Proin finibus erat ac ultrices lobortis. Ut venenatis tortor eget lacus tincidunt, vel auctor lorem auctor. Etiam molestie vulputate mi eget pulvinar.</string>
+    <string name="content_description">Image goes in this view</string>
 </resources>

@@ -3,8 +3,10 @@ package app.com.listacompras.asynctask;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
@@ -19,49 +21,62 @@ import app.com.listacompras.R;
  * Created by daniel on 20/11/2016.
  */
 
-public class QRAsyncTask extends AsyncTask<String, Bitmap, ImageView> {
+public class QRAsyncTask extends AsyncTask<String, Integer, Bitmap> {
     Context myContext;
     View viewRoot;
     TextView textView;
     ImageView imageView;
+    //progress Bar
+    ProgressBar bar;
     //create values in QR code
     public final static int QRCodeWidth = 300;
     Bitmap bitmap;
-    public QRAsyncTask(Context context, View root) {
+    public QRAsyncTask(Context context, View root, ProgressBar b) {
         myContext = context;
         viewRoot = root;
+        this.bar = b;
     }
 
     /* method to execute the principal task on a second thread */
 
     @Override
-    protected ImageView doInBackground(String... params) {
-        try {
-            bitmap = TextToImageEncode(params.toString());
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
-        publishProgress(bitmap);
-        return null;
+    protected Bitmap doInBackground(String... params) {
+            try {
+                for (int i = 0; i < 5; i++) {
+                    bitmap = TextToImageEncode(params[0]);
+                    publishProgress(i);
+                }
+            } catch (WriterException e) {
+                e.printStackTrace();
+            }
+        return bitmap;
     }
 
     //first method is execute in Async Task
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        bar.setVisibility(View.VISIBLE);
     }
 
     @Override
-    protected void onPostExecute(ImageView bitmap) {
-        super.onPostExecute(bitmap);
-    }
-
-    @Override
-    protected void onProgressUpdate(Bitmap... values) {
+    protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
+        bar.setProgress(values[0]);
         imageView = (ImageView) viewRoot.findViewById(R.id.QRImageView);
-        imageView.setImageBitmap(values[0]);
+        imageView.setImageBitmap(bitmap);
+        //imageView.setImageBitmap(values[0]);
     }
+
+    @Override
+    protected void onPostExecute(Bitmap bitmap) {
+        super.onPostExecute(bitmap);
+        imageView = (ImageView) viewRoot.findViewById(R.id.QRImageView);
+        imageView.setImageBitmap(bitmap);
+        bar.setVisibility(View.INVISIBLE);
+        Log.d("Bitmap", bitmap.toString());
+    }
+
 
     /* Method to generate Bitmap QR Code*/
     Bitmap TextToImageEncode(String text) throws WriterException{
