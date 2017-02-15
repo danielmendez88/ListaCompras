@@ -11,4 +11,6 @@
     <!--aqui van algunos string para los hints-->
     <string name="hint_token">Token</string>
     <string name="hint_name">generic name</string>
+    <!--botones-->
+    <string name="button_token">Generar</string>
 </resources>
