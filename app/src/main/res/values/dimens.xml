@@ -7,7 +7,7 @@
     <dimen name="detail_backdrop_height">250dp</dimen>
     <dimen name="backdrop_title">30dp</dimen>
     <dimen name="backdrop_subtitle">18dp</dimen>
-    <dimen name="card_margin">5dp</dimen>
+    <dimen name="card_margin">16dp</dimen>
     <dimen name="card_album_radius">0dp</dimen>
     <dimen name="album_cover_height">160dp</dimen>
     <dimen name="album_title_padding">10dp</dimen>
@@ -23,4 +23,9 @@
     <dimen name="tab_label">14sp</dimen>
     <dimen name="custom_tab_layout_height">72dp</dimen>
     <!--set new dimens for the tabs-->
+    <!-- card view design-->
+    <dimen name="grid_item_text_size">11sp</dimen>
+    <dimen name="grid_view_padding">5dp</dimen>
+    <dimen name="grid_item_image_size">90dp</dimen>
+
 </resources>
