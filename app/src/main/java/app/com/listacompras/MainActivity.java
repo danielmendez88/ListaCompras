@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
         //cast floatingbutton
         evento = new Eventoqr(this);
         FloatingButton = (FloatingActionButton) findViewById(R.id.A1);
+        //send event to method evento with FloatingButton
         View.OnClickListener l = evento;
         FloatingButton.setOnClickListener(l);
     }
