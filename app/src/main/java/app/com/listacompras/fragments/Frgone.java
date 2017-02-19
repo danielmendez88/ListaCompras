@@ -2,6 +2,7 @@ package app.com.listacompras.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 
 import app.com.listacompras.MainActivity;
 import app.com.listacompras.R;
+import app.com.listacompras.activity_class.Welcome;
 import app.com.listacompras.interfaces.CodeScan;
 
 /**
@@ -43,7 +45,7 @@ public class Frgone extends Fragment {
          *
          */
         enviar = (Button) rootView.findViewById(R.id.enviar);
-        texto = (EditText) rootView.findViewById(R.id.caja);
+        /*texto = (EditText) rootView.findViewById(R.id.caja);
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +59,14 @@ public class Frgone extends Fragment {
 
                 Snackbar.make(v, "text sent to Fragment Token:\n " + mensaje, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        }); */
+
+        enviar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Welcome.class);
+                startActivity(intent);
             }
         });
 

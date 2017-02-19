@@ -4,9 +4,25 @@
     android:layout_height="match_parent"
     android:paddingRight="25dp"
     android:paddingLeft="25dp"
-    android:background="@drawable/mycustombackground"
     android:orientation="vertical"
     android:id="@+id/fragmento1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="35dp"
+        android:paddingBottom="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/about"
+            android:textStyle="bold"
+            android:layout_gravity="center|center_vertical"
+            android:text="@string/about"/>
+
+    </LinearLayout>
 
     <!--<android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
@@ -14,16 +30,16 @@
         android:id="@+id/list_rv_products"
         android:scrollbars="vertical">
     </android.support.v7.widget.RecyclerView>-->
-    <TextView
+   <!-- <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40sp"
         android:textStyle="bold"
         android:layout_gravity="center"
         android:id="@+id/msj"
-        android:text="@string/text_one"/>
+        android:text="@string/text_one"/>-->
 
-    <EditText
+   <!-- <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/caja"
@@ -34,7 +50,26 @@
         android:ems="10"
         android:hint="@string/hint"
         android:textStyle="bold"
-        android:gravity="center"/>
+        android:gravity="center"/> -->
+
+    <View
+        android:id="@+id/border"
+        android:layout_width="match_parent"
+        android:layout_height="2dip"
+        android:background="#FF909090" />
+
+    <TextView
+        android:id="@+id/article_description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:paddingBottom="@dimen/songs_count_padding_bottom"
+        android:paddingLeft="@dimen/album_title_padding"
+        android:paddingRight="@dimen/album_title_padding"
+        android:text="@string/text_description"
+        android:layout_gravity="center_vertical|right"
+        android:paddingTop="10dp"
+        android:textSize="@dimen/article"/>
 
     <Button
         android:layout_width="match_parent"

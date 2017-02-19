@@ -1,16 +1,25 @@
 package app.com.listacompras;
 
 
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +38,12 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
     private ViewPager viewPager;
     String fragmentToken;
     Eventoqr evento;
+    /**
+     * we declare the values what we have to use for Navigation Drawer
+     */
+    private DrawerLayout drawerlayout;
+    private CoordinatorLayout coordinatorLayout;
+
     FloatingActionButton FloatingButton;
 
     //declare an Array to add icons
@@ -47,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //inflate coordinator layout
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_main);
         //set variable ToolBar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -62,11 +79,102 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
 
+        /**
+         * navigation Drawer
+         */
+        setSupportActionBar(toolbar);
+        initNavigationDrawer();
+
         //cast floatingbutton
         evento = new Eventoqr(this);
         FloatingButton = (FloatingActionButton) findViewById(R.id.A1);
         View.OnClickListener l = evento;
         FloatingButton.setOnClickListener(l);
+    }
+
+    /***
+     * Navigation Drawer Class
+     */
+    public void initNavigationDrawer()
+    {
+        //we cast the navigation view
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch (id)
+                {
+                    case R.id.home:
+                        SnackBack("Casa ya estamos aquí");
+                        drawerlayout.closeDrawers();
+                        break;
+                    case R.id.profile:
+                        SnackBack("perfil");
+                        drawerlayout.closeDrawers();
+                        break;
+                    case  R.id.settings:
+                        SnackBack("opciones");
+                        drawerlayout.closeDrawers();
+                        break;
+                    case R.id.lgoutmenu:
+                        SnackBack("Salir de la aplicación");
+                        drawerlayout.closeDrawers();
+                        break;
+
+                }
+                return true;
+            }
+        });
+
+        View header = navigationView.getHeaderView(0);
+        TextView email = (TextView) header.findViewById(R.id.email);
+        email.setText("daniel.mendez@cimat.mx");
+
+        drawerlayout = (DrawerLayout) findViewById(R.id.drawer);
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerlayout, toolbar, R.string.drawer_open, R.string.drawer_close){
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+        };
+
+        drawerlayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+
+    }
+
+    /***
+     * snack Bar
+     */
+    private void SnackBack(String texto)
+    {
+        Snackbar snackbar = Snackbar.make(coordinatorLayout,texto.toString(), Snackbar.LENGTH_LONG)
+                .setAction("Intentar", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+
+        /**
+         * changing message text color
+         */
+        snackbar.setActionTextColor(Color.RED);
+        // changing action button text color
+        View sbView = snackbar.getView();
+        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.YELLOW);
+
+        //show the snack bar
+        snackbar.show();
     }
 
     private void setupTabIcons()
