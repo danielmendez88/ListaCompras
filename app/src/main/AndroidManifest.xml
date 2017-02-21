@@ -17,6 +17,10 @@
         </activity>
         <activity android:name=".activity_class.Welcome">
         </activity>
+        <activity android:name=".activity_class.Profile_activity"
+            android:label="@string/lbl_app_name"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.CAMERA"/>

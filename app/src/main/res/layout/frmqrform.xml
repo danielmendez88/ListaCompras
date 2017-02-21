@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="25dp"
+    android:paddingEnd="25dp"
+    android:paddingStart="25dp"
+    android:paddingBottom="25dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <!--here I put the image View-->
+    <LinearLayout
+        android:id="@+id/layout_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:contentDescription="@string/content_description"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:id="@+id/imageView"/>
+    </LinearLayout>
+
+    <!--another layout linear-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_image"
+        android:id="@+id/line2">
+
+        <View
+            android:id="@+id/border_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="3dip"
+            android:background="#FF909090" />
+
+    </LinearLayout>
+
+    <!--another layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:orientation="horizontal"
+        android:paddingTop="30dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/content_description"
+            android:src="@drawable/qrcode_scan"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/token"
+                android:ems="8"
+                android:hint="@string/hint_token"
+                android:inputType="numberDecimal" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+</RelativeLayout>

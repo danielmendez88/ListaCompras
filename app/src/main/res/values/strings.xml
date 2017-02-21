@@ -23,4 +23,12 @@
     <!--strings for drawers-->
     <string name="drawer_open">Abrir</string>
     <string name="drawer_close">Cerrar</string>
+
+    <!--strings for menu-->
+    <string name="home">Inicio</string>
+    <string name="profile">Perfil</string>
+    <string name="settings">Ajustes</string>
+    <string name="logout">Salir</string>
+    <!--string label-->
+    <string name="lbl_app_name">Método</string>
 </resources>

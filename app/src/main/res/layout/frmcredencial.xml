@@ -12,7 +12,8 @@
     <!--Agregamos un RelativeLayout para poder tener dos widgets dentro de un contenedor y manejarlos-->
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
         <!--Barra de progreso-->
             <ProgressBar
                 android:layout_width="match_parent"

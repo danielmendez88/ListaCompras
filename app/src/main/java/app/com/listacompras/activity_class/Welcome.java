@@ -58,6 +58,7 @@ public class Welcome extends AppCompatActivity {
          * layouts of all sliders
          */
         layouts = new int[]{
+                R.layout.slide3,
                 R.layout.slide,
                 R.layout.slide2
         };

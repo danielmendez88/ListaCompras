@@ -1,6 +1,7 @@
 package app.com.listacompras;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
@@ -21,9 +22,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.readystatesoftware.systembartint.SystemBarTintManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import app.com.listacompras.activity_class.Profile_activity;
 import app.com.listacompras.clases.Eventoqr;
 import app.com.listacompras.fragments.Frgone;
 import app.com.listacompras.fragments.Frmcredencial;
@@ -67,6 +71,10 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
         //set variable ToolBar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //set the padding to match the status Bar height
+        toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
+        //getApply
+        getApply();
         //here We get Support and display home enabled
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //set viewPager
@@ -108,7 +116,9 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
                 switch (id)
                 {
                     case R.id.home:
-                        SnackBack("Casa ya estamos aquí");
+
+                        Intent intento = new Intent(getApplication(), Profile_activity.class);
+                        startActivity(intento);
                         drawerlayout.closeDrawers();
                         break;
                     case R.id.profile:
@@ -176,6 +186,35 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
 
         //show the snack bar
         snackbar.show();
+    }
+
+    /**
+     * A method to find height of the status bar
+     */
+    public int getStatusBarHeight()
+    {
+        int result = 0;
+
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0){
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+
+    }
+
+    /**
+     * method to apply changes in status bar
+     */
+    private void getApply()
+    {
+        SystemBarTintManager systemBarTintManager = new SystemBarTintManager(this);
+        //enable status bar int
+        systemBarTintManager.setStatusBarTintEnabled(true);
+        //enable navigation bar int
+        systemBarTintManager.setNavigationBarTintEnabled(true);
+        //set the transparent color of the status bar, 20% darker
+        systemBarTintManager.setTintColor(Color.parseColor("#20000000"));
     }
 
     private void setupTabIcons()

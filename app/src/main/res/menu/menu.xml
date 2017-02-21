@@ -3,21 +3,21 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/home"
-            android:title="Home"
+            android:title="@string/home"
             android:icon="@drawable/ic_home"
             />
         <item
             android:id="@+id/profile"
-            android:title="Profile"
+            android:title="@string/profile"
             android:icon="@drawable/ic_person_black_48dp"/>
         <item
             android:id="@+id/settings"
-            android:title="Settings"
+            android:title="@string/profile"
             android:icon="@drawable/ic_settings_black_48dp"/>
 
         <item
             android:id="@+id/lgoutmenu"
-            android:title="Logout"
+            android:title="@string/logout"
             android:icon="@drawable/ic_power_settings_new_black_48dp"/>
 
     </group>
