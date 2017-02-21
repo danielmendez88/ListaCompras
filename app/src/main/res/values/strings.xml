@@ -31,4 +31,11 @@
     <string name="logout">Salir</string>
     <!--string label-->
     <string name="lbl_app_name">Método</string>
+    <!--buttons-->
+    <string name="cancel">Cancelar</string>
+    <string name="accept">Aceptar</string>
+    <string name="generate">Generar QR</string>
+    <!--buttons end-->
+    <!--error messages-->
+    <string name="token_length_required">Token incorrecto</string>
 </resources>

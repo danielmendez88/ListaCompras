@@ -3,8 +3,15 @@ package app.com.listacompras.activity_class;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
@@ -17,6 +24,10 @@ import app.com.listacompras.R;
 public class Profile_activity extends AppCompatActivity {
     //declare values
     private Toolbar tb;
+    private EditText editor_scan;
+    private TextInputLayout tokenLayout;
+    private Button btnscan, btncancel;
+    private TextInputLayout tilt;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,19 +37,49 @@ public class Profile_activity extends AppCompatActivity {
         tb = (Toolbar) this.findViewById(R.id.tool_bar_profile);
         setSupportActionBar(tb);
         //set the padding to match the status Bar height
-        //tb.setPadding(0, getStatusBarHeight(), 0, 0);
-        //getApply();
+        tb.setPadding(0, getStatusBarHeight(), 0, 0);
+        getApply();
         //here We get Support and display home enabled
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         setSupportActionBar(tb);
 
+        //casting the layout widgets
+        btnscan = (Button) findViewById(R.id.btnScan);
+        btncancel = (Button) findViewById(R.id.cancel);
+        //cast
+        tilt = (TextInputLayout) findViewById(R.id.TextinputLayout);
+
+        setupFloatingLabelError();
+
     }
+
+    /**
+     * on Back pressed controls the back button
+     */
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        finish();
+        Log.d("Close Activity", "onBackPressed: the activity has closed correctly");
+    }
+
+    /***
+     *
+     * @param item - a item that option selected has
+     * @return - return the item
+     */
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -68,5 +109,36 @@ public class Profile_activity extends AppCompatActivity {
         systemBarTintManager.setNavigationBarTintEnabled(true);
         //set the transparent color of the status bar, 20% darker
         systemBarTintManager.setTintColor(Color.parseColor("#20000000"));
+    }
+
+    /**
+     * set up Floating Layout Error
+     */
+    private void setupFloatingLabelError()
+    {
+        tilt.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > 8)
+                {
+                    tilt.setError(getString(R.string.token_length_required));
+                    tilt.setErrorEnabled(true);
+                }
+                else
+                {
+                    tilt.setErrorEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 }

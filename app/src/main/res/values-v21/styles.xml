@@ -9,4 +9,12 @@
         <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
     </style>
 
+    <style name="countetText">
+        <item name="android:textColor">#aa5353cc</item>
+    </style>
+
+    <style name="counterOverride">
+        <item name="android:textColor">#ff0000</item>
+    </style>
+
 </resources>
