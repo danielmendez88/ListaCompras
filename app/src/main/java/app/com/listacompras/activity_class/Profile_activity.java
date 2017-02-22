@@ -1,5 +1,7 @@
 package app.com.listacompras.activity_class;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +12,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -21,7 +25,7 @@ import app.com.listacompras.R;
  * Created by daniel on 19/02/2017.
  */
 
-public class Profile_activity extends AppCompatActivity {
+public class Profile_activity extends AppCompatActivity implements View.OnClickListener {
     //declare values
     private Toolbar tb;
     private EditText editor_scan;
@@ -37,8 +41,8 @@ public class Profile_activity extends AppCompatActivity {
         tb = (Toolbar) this.findViewById(R.id.tool_bar_profile);
         setSupportActionBar(tb);
         //set the padding to match the status Bar height
-        tb.setPadding(0, getStatusBarHeight(), 0, 0);
-        getApply();
+        //tb.setPadding(0, getStatusBarHeight(), 0, 0);
+        //getApply();
         //here We get Support and display home enabled
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
@@ -53,6 +57,9 @@ public class Profile_activity extends AppCompatActivity {
 
         setupFloatingLabelError();
 
+        //button cancel setonclicklistener
+        btncancel.setOnClickListener(this);
+        btnscan.setOnClickListener(this);
     }
 
     /**
@@ -137,8 +144,32 @@ public class Profile_activity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                /**
+                 * this will call when stops typing, it will calls after you completely wrote the "word" that is the main difference
+                 * we are going to hide soft virtual keyboard
+                 */
+                if(s.length() > 8)
+                {
+                    ((InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE))
+                            .toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
+                }
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.cancel:
+                //clean editText
+                editor_scan.getText().clear();
+                break;
+            case R.id.btnScan:
+
+                break;
+            default:
+                break;
+        }
     }
 }
