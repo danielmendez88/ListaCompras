@@ -8,24 +8,31 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <!--here I put the image View-->
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layout_image"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentTop="true"
-        android:gravity="center_horizontal"
-        android:paddingTop="10dp">
-
+        android:layout_marginTop="10dp">
+        <!--progressBar-->
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:id="@+id/Pgb"
+            android:layout_centerInParent="true"/>
+        <!--progressBar End-->
         <ImageView
             android:contentDescription="@string/content_description"
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:scaleType="fitCenter"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:adjustViewBounds="true"
             android:src="@drawable/qrcode_logo"
             android:id="@+id/imageView"/>
-    </LinearLayout>
+    </RelativeLayout>
 
     <!--another layout linear-->
     <LinearLayout
@@ -56,8 +63,8 @@
         android:paddingLeft="20dp" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/content_description"
             android:src="@drawable/qrcode_scan"/>
@@ -99,6 +106,7 @@
             android:textColor="@color/QRCodeBlackColor"
             android:text="@string/cancel"/>
         <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/btnScan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

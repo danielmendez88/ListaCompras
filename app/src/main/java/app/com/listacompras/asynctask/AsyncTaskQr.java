@@ -1,5 +1,6 @@
 package app.com.listacompras.asynctask;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -25,11 +26,11 @@ public class AsyncTaskQr extends AsyncTask<String, Integer, Bitmap> {
     private ImageView imageView;
     //progress bar
     private ProgressBar MyPb;
-    private View view;
+    private Activity view;
     //create values in QR code
     public final static int QRCodeWidth = 300;
     private Bitmap bitmap;
-    public AsyncTaskQr(Context context, View root, ProgressBar Pb) {
+    public AsyncTaskQr(Context context, Activity root, ProgressBar Pb) {
         this.MyContext = context;
         this.MyPb = Pb;
         this.view = root;
@@ -39,7 +40,7 @@ public class AsyncTaskQr extends AsyncTask<String, Integer, Bitmap> {
     @Override
     protected Bitmap doInBackground(String... params) {
         try {
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 5; i++)
             {
                 bitmap = TextToImage(params[0]);
                 publishProgress(i);
@@ -55,6 +56,8 @@ public class AsyncTaskQr extends AsyncTask<String, Integer, Bitmap> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        imageView = (ImageView) view.findViewById(R.id.imageView);
+        imageView.setVisibility(View.INVISIBLE);
         MyPb.setVisibility(View.VISIBLE);
     }
 
@@ -64,6 +67,7 @@ public class AsyncTaskQr extends AsyncTask<String, Integer, Bitmap> {
         imageView = (ImageView) view.findViewById(R.id.imageView);
         imageView.setImageBitmap(bitmap);
         MyPb.setVisibility(View.INVISIBLE);
+        imageView.setVisibility(View.VISIBLE);
         Log.d("mostrar bitmap",bitmap.toString());
     }
 

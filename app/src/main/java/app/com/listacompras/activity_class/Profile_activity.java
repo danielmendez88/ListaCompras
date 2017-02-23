@@ -16,10 +16,12 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import app.com.listacompras.R;
+import app.com.listacompras.asynctask.AsyncTaskQr;
 
 /**
  * Created by daniel on 19/02/2017.
@@ -29,9 +31,9 @@ public class Profile_activity extends AppCompatActivity implements View.OnClickL
     //declare values
     private Toolbar tb;
     private EditText editor_scan;
-    private TextInputLayout tokenLayout;
     private Button btnscan, btncancel;
     private TextInputLayout tilt;
+    private ProgressBar PG;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,14 @@ public class Profile_activity extends AppCompatActivity implements View.OnClickL
         btncancel = (Button) findViewById(R.id.cancel);
         //cast
         tilt = (TextInputLayout) findViewById(R.id.TextinputLayout);
+        /**
+         * cast pb
+         */
+        PG = (ProgressBar) findViewById(R.id.Pgb);
+        /**
+         * cast edit Text
+         */
+        editor_scan = (EditText) findViewById(R.id.token);
 
         setupFloatingLabelError();
 
@@ -157,6 +167,11 @@ public class Profile_activity extends AppCompatActivity implements View.OnClickL
         });
     }
 
+    /**
+     *
+     * @param v this is the view of the method that implements of OnClickListener
+     */
+
     @Override
     public void onClick(View v) {
         switch (v.getId())
@@ -166,9 +181,10 @@ public class Profile_activity extends AppCompatActivity implements View.OnClickL
                 editor_scan.getText().clear();
                 break;
             case R.id.btnScan:
-
+                new AsyncTaskQr(getApplicationContext(), this , PG).execute(editor_scan.toString());
                 break;
             default:
+                Log.d("Default", "Estamos en el default del método Onclick");
                 break;
         }
     }
