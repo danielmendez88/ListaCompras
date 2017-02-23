@@ -14,10 +14,15 @@
     <color name="FloatingButton">#5D6674</color>
     <color name="FloatingButtonAction">#D32F2F</color>
     <!--Floating Buttons Action End-->
+    <!--Button Color-->
     <color name="button_color">#FE5F55</color>
     <color name="newWindowBackground">#93ACB5 </color>
+    <color name="button_color_accept">#66BB6A</color>
+    <!--Button Color End-->
+    <!--QR code color-->
     <color name="BackGroundClassic">#FFFFFF</color>
     <color name="QRCodeBlackColor">#000000</color>
+    <!--QR code color End-->
     <color name="QRCodeWhiteColor">#FFFFFF</color>
     <color name="indigo">#4b0082</color>
 

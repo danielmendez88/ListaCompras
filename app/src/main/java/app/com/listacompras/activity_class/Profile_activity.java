@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +19,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
@@ -34,6 +37,7 @@ public class Profile_activity extends AppCompatActivity implements View.OnClickL
     private Button btnscan, btncancel;
     private TextInputLayout tilt;
     private ProgressBar PG;
+    private CoordinatorLayout coordinatorLayout;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +68,11 @@ public class Profile_activity extends AppCompatActivity implements View.OnClickL
          * cast edit Text
          */
         editor_scan = (EditText) findViewById(R.id.token);
+
+        /**
+         * cast coordinator layout
+         */
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout_profile);
 
         setupFloatingLabelError();
 
@@ -181,11 +190,35 @@ public class Profile_activity extends AppCompatActivity implements View.OnClickL
                 editor_scan.getText().clear();
                 break;
             case R.id.btnScan:
-                new AsyncTaskQr(getApplicationContext(), this , PG).execute(editor_scan.toString());
+                int longitud = editor_scan.length();
+                //check if the number´s length is the correct one
+                if(longitud == 0)
+                { setSnackBar("No se puede realizar operación"); }
+                else if (longitud > 8)
+                { setSnackBar("Tamaño del número incorrecto");}
+                else
+                { new AsyncTaskQr(getApplicationContext(), this , PG).execute(editor_scan.toString()); }
                 break;
             default:
                 Log.d("Default", "Estamos en el default del método Onclick");
                 break;
         }
+    }
+
+    /**
+     * we are going to create a snack bar to control message about Qr Code Generator
+     */
+    private void setSnackBar(String t)
+    {
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, t, Snackbar.LENGTH_LONG);
+        // set text color
+        snackbar.setActionTextColor(Color.GREEN);
+        // changing action button text color
+        View sbview = snackbar.getView();
+        TextView textView = (TextView) sbview.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.RED);
+
+        //show the snack bar
+        snackbar.show();
     }
 }
