@@ -197,7 +197,7 @@ public class Profile_activity extends AppCompatActivity implements View.OnClickL
                 else if (longitud > 8)
                 { setSnackBar("Tamaño del número incorrecto");}
                 else
-                { new AsyncTaskQr(getApplicationContext(), this , PG).execute(editor_scan.toString()); }
+                { new AsyncTaskQr(getApplicationContext(), this , PG).execute(editor_scan.getText().toString()); }
                 break;
             default:
                 Log.d("Default", "Estamos en el default del método Onclick");
