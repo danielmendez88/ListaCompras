@@ -27,7 +27,7 @@ import app.com.listacompras.R;
 import app.com.listacompras.asynctask.AsyncTaskQr;
 
 /**
- * Created by daniel on 19/02/2017.
+ * daniel Mendez Cruz on 25/02/2017. Created By DMC
  */
 
 public class Profile_activity extends AppCompatActivity implements View.OnClickListener {

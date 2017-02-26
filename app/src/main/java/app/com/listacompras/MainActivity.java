@@ -27,6 +27,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.com.listacompras.activity_class.NewsActivity;
 import app.com.listacompras.activity_class.Profile_activity;
 import app.com.listacompras.clases.Eventoqr;
 import app.com.listacompras.fragments.Frgone;
@@ -122,7 +123,8 @@ public class MainActivity extends AppCompatActivity implements CodeScan {
                         drawerlayout.closeDrawers();
                         break;
                     case R.id.profile:
-                        SnackBack("perfil");
+                        Intent intentar = new Intent(getApplication(), NewsActivity.class);
+                        startActivity(intentar);
                         drawerlayout.closeDrawers();
                         break;
                     case  R.id.settings:

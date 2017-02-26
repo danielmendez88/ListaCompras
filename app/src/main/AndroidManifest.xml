@@ -21,6 +21,8 @@
             android:label="@string/lbl_app_name"
             android:parentActivityName=".MainActivity">
         </activity>
+        <activity android:name=".activity_class.NewsActivity">
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.CAMERA"/>
