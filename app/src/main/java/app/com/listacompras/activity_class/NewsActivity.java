@@ -43,7 +43,7 @@ public class NewsActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId())
         {
             case R.id.ok:
-                final int ciclos = 6;
+                final int ciclos = 8;
                 int lg;
                 String numero = Edt_texto.getText().toString();
                 lg = Integer.valueOf(numero);

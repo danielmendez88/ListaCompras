@@ -7,10 +7,12 @@ import java.util.Random;
  * daniel Mendez Cruz on 25/02/2017. Created By DMC
  */
 
-public class Prngenerator  {
+public class Prngenerator{
+
     private long seed_generator;
     private int ci_generator;
-    private int a[] = {1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
+    // private int a[] = {1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
+
     /**
      *
      * @param seed seed value
@@ -26,8 +28,17 @@ public class Prngenerator  {
     }
     public long generator()
     {
+        //max for digits = 8, max will be 99999999
+        int max = (int) Math.pow(10, (ci_generator)) - 1;
+        //for digits = 8, min will be 10000000
+        int min = (int) Math.pow(10, ci_generator-1);
+        //range
+        int range = max-min;
+
         Random rand = new Random();
         rand.setSeed(seed_generator);
-        return rand.nextInt(100000);
+        int x = rand.nextInt(range);
+        return x+min;
     }
+
 }
