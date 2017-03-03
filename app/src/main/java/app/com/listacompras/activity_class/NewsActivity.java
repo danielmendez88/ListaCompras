@@ -43,12 +43,12 @@ public class NewsActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId())
         {
             case R.id.ok:
-                final int ciclos = 8;
+                final int length = 8;
                 int lg;
                 String numero = Edt_texto.getText().toString();
                 lg = Integer.valueOf(numero);
-                Prngenerator PRNG = new Prngenerator(lg, ciclos);
-                txtResult.setText(String.valueOf(PRNG.generator()));
+                Prngenerator PRNG = new Prngenerator(lg, length);
+                txtResult.setText(String.valueOf(PRNG.random_generator()));
                 break;
             default:
                 break;
