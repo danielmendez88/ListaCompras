@@ -16,7 +16,6 @@ public class Prngenerator{
     private StringBuilder stb = new StringBuilder();
     private long seed_generator;
     private int length_generator;
-    private LinkedList<Long> final_array = new LinkedList<>();
     private int a[] = {1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
 
     /**
@@ -52,38 +51,32 @@ public class Prngenerator{
 
     public long random_generator()
     {
+        int limit = 6;
+        long set_value;
         long z = (long) Math.pow(seed_generator, 2);
         int trim = (length_generator/2);
         z = z/a[trim];
+        long n = z%10;
+        new_list.addFirst(n);
+        Log.d("actual valor", String.valueOf(n));
         for (int j = 0; j < length_generator; j++)
         {
-            Log.d("next num" + String.valueOf(j), String.valueOf((z%(a[trim]))));
-            if (j % 2 == 0)
-            {
-                    new_list.addLast(z%(a[trim]));
-            }
+            Log.d("next num" + String.valueOf(j), String.valueOf((z%(a[trim]))*(a[j])));
              z /= 10;
-            Log.d("division values", String.valueOf(z));
+            if (j <= limit)
+            {
+                set_value = z%10;
+                new_list.addFirst(set_value);
+                Log.d("division values" + String.valueOf(j) + ":", String.valueOf(set_value));
+            }
         }
 
-        for (int i = 0; i < new_list.size(); i++)
+
+        for (Long s: new_list)
         {
-            //addFirst
-            if (final_array.isEmpty())
-            {
-                //if array is empty we can save the value from another arrayList
-                final_array.addFirst(new_list.get(i));
-            }
-            else
-            {
-                //as we already know, if the array isn't
-                    String actual_position = String.valueOf(new_list.get(i));
-                    String previous_position = String.valueOf(new_list.get(i-1));
-                Log.d("previous position ", previous_position);
-            }
-            Log.d("random_generator" + String.valueOf(i), String.valueOf(new_list.get(i)));
-            stb.append(new_list.get(i));
+           stb.append(s);
         }
+            Log.d("each value from", String.valueOf(new_list.toString()));
         return  Long.valueOf(stb.toString().trim());
     }
 
