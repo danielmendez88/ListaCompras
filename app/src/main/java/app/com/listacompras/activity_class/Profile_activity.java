@@ -25,6 +25,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import app.com.listacompras.R;
 import app.com.listacompras.asynctask.AsyncTaskQr;
+import app.com.listacompras.clases.Prngenerator;
 
 /**
  * daniel Mendez Cruz on 25/02/2017. Created By DMC
@@ -60,18 +61,12 @@ public class Profile_activity extends AppCompatActivity implements View.OnClickL
         btncancel = (Button) findViewById(R.id.cancel);
         //cast
         tilt = (TextInputLayout) findViewById(R.id.TextinputLayout);
-        /**
-         * cast pb
-         */
+        //cast pb
         PG = (ProgressBar) findViewById(R.id.Pgb);
-        /**
-         * cast edit Text
-         */
+        //cast edit Text
         editor_scan = (EditText) findViewById(R.id.token);
 
-        /**
-         * cast coordinator layout
-         */
+        //cast coordinator layout
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout_profile);
 
         setupFloatingLabelError();
@@ -161,12 +156,12 @@ public class Profile_activity extends AppCompatActivity implements View.OnClickL
                 }
             }
 
+            /**
+             * this will call when stops typing, it will calls after you completely wrote the "word" that is the main difference
+             * we are going to hide soft virtual keyboard
+             */
             @Override
             public void afterTextChanged(Editable s) {
-                /**
-                 * this will call when stops typing, it will calls after you completely wrote the "word" that is the main difference
-                 * we are going to hide soft virtual keyboard
-                 */
                 if(s.length() > 8)
                 {
                     ((InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE))
@@ -197,7 +192,14 @@ public class Profile_activity extends AppCompatActivity implements View.OnClickL
                 else if (longitud > 8)
                 { setSnackBar("Tamaño del número incorrecto");}
                 else
-                { new AsyncTaskQr(getApplicationContext(), this , PG).execute(editor_scan.getText().toString()); }
+                {
+                    int length = 8;
+                    int seed_number;
+                    seed_number = Integer.valueOf(editor_scan.getText().toString());
+                    Prngenerator random_generator = new Prngenerator(seed_number, length);
+                    String text_scan = random_generator.random_generator();
+                    new AsyncTaskQr(getApplicationContext(), this , PG).execute(text_scan.toString());
+                }
                 break;
             default:
                 Log.d("Default", "Estamos en el default del método Onclick");
