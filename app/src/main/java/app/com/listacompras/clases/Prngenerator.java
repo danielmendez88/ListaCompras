@@ -31,7 +31,7 @@ public class Prngenerator{
      *
      * @return a long value that send a type int data to textView
      */
-    public long random_generator()
+    public String random_generator()
     {
         int limit = 6; //limit of numbers that the array can stores
         long set_value; //this is the value we can set as module
@@ -53,13 +53,15 @@ public class Prngenerator{
             }
         }
 
-
-        for (Long s: new_list)
+        for (int i = 0; i < new_list.size(); i++)
         {
-           stb.append(s);
+            stb.append(new_list.get(i));
+            Log.d("numbers stored", String.valueOf(new_list.get(i)));
         }
-            Log.d("each value from", String.valueOf(new_list.toString()));
-        return  Long.valueOf(stb.toString().trim());
+
+        Log.d("each value from", String.valueOf(new_list.toString()));
+        Log.d("each value from", stb.toString().trim());
+        return stb.toString().trim();
     }
 
 
