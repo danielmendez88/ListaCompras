@@ -16,8 +16,9 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
 import app.com.listacompras.R;
+
 /**
- * Created by daniel on 22/02/2017.
+ * daniel Mendez Cruz on 25/02/2017. Created By DMC
  */
 
 public class AsyncTaskQr extends AsyncTask<String, Integer, Bitmap> {

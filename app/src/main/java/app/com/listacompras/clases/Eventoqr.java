@@ -24,7 +24,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import static android.content.Context.MODE_PRIVATE;
 
 /**
- * Created by daniel on 16/11/2016.
+ * daniel Mendez Cruz on 16/11/2016. Created By DMC
  */
 
 public class Eventoqr implements View.OnClickListener, ZXingScannerView.ResultHandler{
