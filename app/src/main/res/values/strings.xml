@@ -7,4 +7,10 @@
     <string name="hint">Texto de Entrada</string>
     <string name="credentials">Credenciales de usuario</string>
     <string name="text_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec lacinia quam. Pellentesque rhoncus porttitor urna, vel ultricies massa malesuada placerat. Proin finibus erat ac ultrices lobortis. Ut venenatis tortor eget lacus tincidunt, vel auctor lorem auctor. Etiam molestie vulputate mi eget pulvinar.</string>
+    <string name="content_description">Image goes in this view</string>
+    <!--aqui van algunos string para los hints-->
+    <string name="hint_token">Token</string>
+    <string name="hint_name">generic name</string>
+    <!--botones-->
+    <string name="button_token">Generar</string>
 </resources>

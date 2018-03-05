@@ -6,18 +6,19 @@ package app.com.listacompras.clases;
 
 public class Product {
     private String name , description;
-    private float price;
+    private float price, rating;
     private int stock;
     private  int thumbnail;
     public Product() {
     }
 
-    public Product(String name, String description, float price, int stock, int thumbnail) {
+    public Product(String name, String description, float price, int stock, int thumbnail, float rating) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.stock = stock;
         this.thumbnail = thumbnail;
+        this.rating = rating;
     }
 
     public String getName() {
@@ -59,4 +60,8 @@ public class Product {
     public void setThumbnail(int thumbnail) {
         this.thumbnail = thumbnail;
     }
+
+    public float getRating() {return rating;}
+
+    public void setRating(float rating) { this.rating = rating; }
 }

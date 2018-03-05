@@ -11,4 +11,7 @@
     <color name="FloatingButton">#5D6674</color>
     <color name="button_color">#FE5F55</color>
     <color name="newWindowBackground">#93ACB5 </color>
+    <color name="QRCodeBlackColor">#000000</color>
+    <color name="QRCodeWhiteColor">#FFFFFF</color>
+    <color name="indigo">#4b0082</color>
 </resources>

@@ -4,17 +4,76 @@
     android:id="@+id/credential"
     android:orientation="vertical"
     android:background="@drawable/mycustombackground"
+    android:paddingTop="30dp"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     android:layout_height="match_parent">
+    <!--Agregamos un RelativeLayout para poder tener dos widgets dentro de un contenedor y manejarlos-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <!--Barra de progreso-->
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:layout_marginTop="5dp"
+                android:layout_centerInParent="true"/>
+        <!--termina barra de progreso-->
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/content_description"
+            android:adjustViewBounds="true"
+            android:id="@+id/QRImageView"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+           />
+    </RelativeLayout>
+    <!--cambiamos este texview para agregar un textview-->
 
-    <TextView
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:inputType="number"
+            android:hint="@string/hint_token"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:text="@string/button_token"
+        android:layout_marginTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:theme="@style/MyButton"
+        android:id="@+id/qrbuttongenerator" />
+
+
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center_horizontal"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="20dp"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:text="@string/credentials"/>
+        android:id="@+id/ViewCredential"
+        android:text="@string/credentials"/>-->
 
 </LinearLayout>
